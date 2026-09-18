@@ -1,8 +1,7 @@
-public class Suscriptor : Perfil {
+public class Suscriptor : Perfil, Observador {
     private int mesesDeSuscripcion;
     private int horasVistas;
     private EstrategiaDeComparacion estrategia;
-
     public Suscriptor(
         string n,
         int i,
@@ -14,40 +13,34 @@ public class Suscriptor : Perfil {
         horasVistas = h;
         estrategia = e;
     }
-
     public int getMesesDeSuscripcion() {
         return mesesDeSuscripcion;
     }
-
     public int getHorasVistas() {
         return horasVistas;
     }
-
     public void setEstrategia(EstrategiaDeComparacion e) {
         estrategia = e;
     }
-
+    public void actualizar(Observado o) {
+        Canal canal = (Canal)o;
+        verContenido();
+    }
+    public void verContenido() {
+        Console.WriteLine(nombre + " está viendo el contenido");
+    }
+    public void reaccionarANotificacion() {
+        Console.WriteLine(nombre + " reaccionó a la notificación");
+    }
     public override bool sosIgual(Comparable c) {
-        return estrategia.sosIgual(
-            this,
-            (Suscriptor)c
-        );
+        return estrategia.sosIgual(this, (Suscriptor)c);
     }
-
     public override bool sosMenor(Comparable c) {
-        return estrategia.sosMenor(
-            this,
-            (Suscriptor)c
-        );
+        return estrategia.sosMenor(this, (Suscriptor)c);
     }
-
     public override bool sosMayor(Comparable c) {
-        return estrategia.sosMayor(
-            this,
-            (Suscriptor)c
-        );
+        return estrategia.sosMayor(this, (Suscriptor)c);
     }
-
     public override string ToString() {
         return "[Suscriptor: Nombre=" + nombre +
                ", ID=" + id +
