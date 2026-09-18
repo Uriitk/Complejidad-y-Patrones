@@ -1,4 +1,4 @@
-public class Suscriptor : Perfil, Observador {
+public class Suscriptor : Perfil, Observador, Mostrable {
     private int mesesDeSuscripcion;
     private int horasVistas;
     private EstrategiaDeComparacion estrategia;
