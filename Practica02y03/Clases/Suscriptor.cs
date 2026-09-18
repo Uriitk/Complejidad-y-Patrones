@@ -47,4 +47,10 @@ public class Suscriptor : Perfil, Observador, Mostrable {
                ", Meses=" + mesesDeSuscripcion +
                ", Horas=" + horasVistas + "]";
     }
+    public string mostrarInfo() {
+        return this.ToString();
+    }
+    public Suscriptor getSuscriptor() {
+        return this;
+    }
 }
